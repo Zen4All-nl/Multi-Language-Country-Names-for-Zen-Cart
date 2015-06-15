@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="en">
+    <title>Multi Language Country Names 1.0.0</title>
+
+    <link rel="stylesheet" type="text/css" href="includes/css/stylesheet.css">
+    <script type="text/javascript" src="includes/jscript/jscript_tabs.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h2>Multi Language Country Names 1.0.0</h2>
+      <p>Support thread: <a href="http://www.zen-cart.com/showthread.php?200407" target="_blank">http://www.zen-cart.com/showthread.php?200407</a><br />
+        Download link: <a href="http://www.zen-cart.com/downloads.php?do=file&amp;id=1513" target="_blank">http://www.zen-cart.com/downloads.php?do=file&amp;id=1513</a>
+      </p>
+      <div id="slidetabsmenu" style="display: none;">
+        <ul>
+          <li> <a onClick="expandcontent('sc1', this)" href="javascript:void(0)"><span>Overview</span></a></li>
+          <li> <a onClick="expandcontent('sc2', this)" href="javascript:void(0)"><span>Install/Un-install</span></a></li>
+          <li> <a onClick="expandcontent('sc3', this)" href="javascript:void(0)"><span>Configuration</span></a></li>
+          <li> <a onClick="expandcontent('sc4', this)" href="javascript:void(0)"><span>FAQs</span></a></li>
+          <li> <a onClick="expandcontent('sc5', this)" href="javascript:void(0)"><span>Credits &amp; History</span></a></li>
+          <li> <a onClick="expandcontent('sc6', this)" href="javascript:void(0)"><span>License</span></a></li>
+        </ul>
+      </div>
+      <br style="clear: both;">
+
+      <!--Begin tabcontainer-->
+      <div id="tabcontentcontainer">
+
+        <!--Begin sc1-->
+        <div class="tabcontent" id="sc1" style="display: block;">
+          <div class="textcontent">
+            <h3>OVERVIEW</h3>
+            <p><strong>Multi Language Country Names</strong> will allow you as a shop admin to enter country names in multiple languages. There will be a new entry for each installed language in your Zen Cart installaton.<br>
+              In the store front, language names will be shown based upon the selected language.<br>
+              When an accound is made, and/or an order is placed by a customer, the country name will be saved in that account/order, based on the selected language at the time of creatoin.</p>
+          </div>
+        </div>
+        <!--End sc1-->
+
+        <!--Begin sc2-->
+        <div class="tabcontent" id="sc2" style="display: block;">
+          <div class="textcontent">
+            <h3>INSTALL/UNINSTALL</h3>
+            <p><b>!!!!!BACKUP YOUR STORE BEFORE YOU BEGIN!!!!!</b></p>
+            <p>Installation of the module has been made as simple as possible and shouldn't take long for any stores which have not already modified any of the core files which this module has to modify.<br>
+            All changes have been clearly marked by comments like this:</p>
+            <code>// BOF Zen4All Multi Language Country Names 1 of XXX<br />
+             "Some code"<br />
+             // EOF Zen4All Multi Language Country Names 1 of XXX</code>
+            <h4><u>Installation instructions</u></h4>
+            <p>Before you start you should rename all folders in the distribution named 'YOUR_TEMPLATE' to the template folder name you are using.</p>
+            <p>You will find 6 folders beneath in this instalation package, one modified core files, one contains new files, one contains the sql instalation files, on contains optional files (which is empty for now), one the sql uninstall filetemplate override files, and the last , which you obviously already found, the readme.</p>
+            <ol>
+              <li><strong>Modified Core Files</strong><br>
+              Quite a few core Zen Cart files must be modified for the multi lingual country names to work.<br>
+              If any of the core files this distribution uses have already been modified (because of another third party module being installed for example) then the changes for the respective files should be applied manually by copying across the appropriate sections of code required for the Multi Language Country Names module. These sections are clearly marked (with &ldquo;// BOF Zen4All Multi Language Country Names 1 of XXX&rdquo; and &ldquo;// eof dynamic filter x of x&rdquo; comments) within the sample files provided in this distribution and should be easy enough to copy across, especially if a &ldquo;diff&rdquo; software package (such as Beyondcompare or WinMerge) is used.<br>The modified files can be found within the 'core file overrides' folder in the distribution as follows.<br /><strong>Do not  make changes to your core files without taking a copy of them first so you can replace them later if needed!</strong>
+                <ul class="Steps">
+                  <li>includes/classes/order.php</li>
+                  <li>includes/extra_datafiles/multilanguage_country_names_database_names.php</li>
+                  <li>includes/functions/functions_lookups.php</li>
+                  <li>includes/modules/payment/paypalwpp.php</li>
+                  <li>YOUR_ADMIN/countries.php</li>
+                  <li>YOUR_ADMIN/customers.php</li>
+                  <li>YOUR_ADMIN/geo_zones.php</li>
+                  <li>YOUR_ADMIN/languages.php</li>
+                  <li>YOUR_ADMIN/linkpoint_review.php</li>
+                  <li>YOUR_ADMIN/zones.php</li>
+                  <li>YOUR_ADMIN/includes/functions/general.php</li>
+                </ul>
+              </li>
+              <li><strong>New Files</strong><br />
+                Copy the renamed YOUR_ADMIN folder from the 'new files' folder into your store's main directory.<br>
+                The files are already in the correct directory structure, so a single drag-and-drop of the folder into the root directory for the store will put the files in the correct locations.<br>
+                <STRONG>Please do not copy the files individually</STRONG> - doing so often results in files being missed out!
+                <ul class="Steps">
+                  <li>YOUR_ADMIN/includes/extra_datafiles/multilanguage_country_names_database_names.php</li>
+                  <li>YOUR_ADMIN/includes/languages/english/extra_definitions/multi_language_country_names.php</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Install</strong><br>Copy the renamed YOUR_ADMIN folder from the 'install' folder into your store's main directory.<br>
+                The files are already in the correct directory structure, so a single drag-and-drop of the folder into the root directory for the store will put the files in the correct locations.<br>
+                <STRONG>Please do not copy the files individually</STRONG> - doing so often results in files being missed out!
+                <ul class="Steps">
+                  <li>YOUR_ADMIN/includes/auto_loaders/config.multi_language_country_names.php</li>
+                  <li>YOUR_ADMIN/includes/functions/extra_functions/zen_cfg_read_only.php</li>
+                  <li>YOUR_ADMIN/includes/init_includes/init_multi_language_country_names.php</li>
+                  <li>YOUR_ADMIN/includes/installers/multi_language_country_names/1_0_0.php</li>
+                  <li>YOUR_ADMIN/includes/languages/english/extra_definitions/multi_language_country_names.php</li>
+                </ul>
+                <p>After copying these files, log in to your stores admin. The instalation script will now automatically create the needed database tables and settings. Also will it populate the new tables.</p>
+              </li>
+            </ol>
+            <p><a href="#top">Back to top</a></p>
+            <hr style="text-align:center; width:75%" />
+
+            <h4><a name="uninstall-all" id="uninstall-all"></a><u>Uninstall instructions</u></h4>
+            <p>If you do wish to remove the module, simply delete all the New Files loaded in step 2, delete (or replace with your original if the file was already present) Install Files loaded in step 3, then replace all the Modified Core Files loaded in step 1 with your original files.</p>
+            <p>Finally, run 'uninstall.sql' to remove the configuration, and multi language country name table.</p>
+            <p><a href="#top">Back to top</a></p>
+
+          </div>
+        </div>
+        <!--End sc2-->
+
+        <!--Begin sc3-->
+        <div class="tabcontent" id="sc3" style="display: block;">
+          <div class="textcontent">
+            <h3>CONFIGURATION</h3>
+            <p>Now that you have installed this module you can go to your shops admin. Open Locations / Taxes => Countries.<br /> You will see that in the right panel there are now multiple entries with flags of the selected country. Click edit, and you will be able to enter a localized name for the country name.
+            <p><u><strong>Uploading a CSV</strong></u></p>
+            <p>A future release is already planned, and will contain a facility to upload a csv or sql file with already translated country names.</p>
+          </div>
+
+        </div>
+      </div>
+      <!--End sc3-->
+
+      <!--Begin sc4-->
+      <div class="tabcontent" id="sc4" style="display: block;">
+        <div class="textcontent">
+          <h3>FAQs</h3>
+
+          <ol class="TableOfContents">
+            <li><a href="#change-sideobx-heading">How can I change the filter sidebox heading?</a></li>
+            <li><a href="#change-sub-headings">How can I change the filter sub-headings?</a></li>
+            <li><a href="#change-querystring-prefix">How can I change the filter querystring prefix?</a></li>
+            <li><a href="#change-querystring-names">How can I change the filter querystring names?</a></li>
+            <li><a href="#uri-mapping">I have URI mapping software installed in my store. Does this modification work with URI mapping?</a></li>
+            <li><a href="#hooking-into-the-filter">Is it possible to hook into Dynamic Filter, to redirect banner ads to a pre-filtered list for example?</a></li>
+          </ol>
+
+          <h4><a name="change-sideobx-heading" id="change-sideobx-heading"></a>How can I change the filter sidebox heading?</h4>
+          <p>The Dynamic Filter sidebox heading is initially set to 'Narrow Your Results'. This can be changed if required.<br>
+            To change it, open up file includes/languages/english/extra_definitions/YOUR_TEMPLATE/dynamic_filter_defines.php and change the following line to reflect the heading you require</p>
+          <ul class="Steps">
+            <li>define('BOX_HEADING_FILTER', 'Narrow Your Results');</li>
+          </ul>
+          <p><a href="#top">Back to top</a></p>
+          <hr style="text-align:center; width:75%">
+
+          <h4><a name="change-sub-headings" id="change-sub-headings"></a>How can I change the filter sub-headings?</h4>
+          <p>All sub-headings are prefixed with the word 'By' and suffixed with a colon (':'). If you need to change these, open up file includes/languages/english/extra_definitions/YOUR_TEMPLATE/dynamic_filter_defines.php and change the following lines as you require</p>
+          <ul class="Steps">
+            <li>define('DYNAMIC_FILTER_TEXT_PREFIX', 'By ');</li>
+            <li>define('DYNAMIC_FILTER_TEXT_SUFFIX', ':');</li>
+          </ul>
+
+          <p>The manufacturer, category and price sub-headings are initially set to 'By Brand:', 'By Category:' and 'By Price:' respecitvely. These can also be changed if required.<br>
+            To change them, open up file includes/languages/english/extra_definitions/YOUR_TEMPLATE/dynamic_filter_defines.php and change the following lines to reflect the sub-headings you require</p>
+          <ul class="Steps">
+            <li>define('DYNAMIC_FILTER_TEXT_MANUFACTURER','Brand');</li>
+            <li>define('DYNAMIC_FILTER_TEXT_CATEGORY','Category');</li>
+            <li>define('DYNAMIC_FILTER_TEXT_PRICE','Price');</li>
+          </ul>
+          <p>All other sub-headings are generated by taking the name of the attribute (e.g, if your products have an attribute of colour, the heading would be 'By Colour:') so these can only be changed by changing the attribute name.</p>
+          <p><a href="#top">Back to top</a></p>
+          <hr style="text-align:center; width:75%">
+
+          <h4><a name="change-querystring-prefix" id="change-querystring-prefix"></a>How can I change the filter querystring prefix?</h4>
+          <p>Each time a filter is applied it is added to the querystring in the URL. A prefix is used which is initially set to 'flt' e.g. when filtering by category you will see   'fltCategory[]=xx' in the querystring). This can be changed if required.<br>
+            Open up file includes/languages/english/extra_definitions/YOUR_TEMPLATE/dynamic_filter_defines.php and change the following line to reflect the prefix you require</p>
+          <ul class="Steps">
+            <li>define('DYNAMIC_FILTER_PREFIX', 'flt');</li>
+          </ul>
+          <p><a href="#top">Back to top</a></p>
+          <hr style="text-align:center; width:75%">
+
+          <h4><a name="change-querystring-names" id="change-querystring-names"></a>How can I change the filter querystring names?</h4>
+          <p>The querystring names for manufacturer, category and price are initially set to 'Brand', 'Category' and 'Price' respectively (e.g. when filtering by manufacturer you will see 'fltBrand[]=xx' in the querystring). This can be changed if required.<br>
+            Open up file includes/languages/english/extra_definitions/YOUR_TEMPLATE/dynamic_filter_defines.php and change the following lines to reflect the names you require</p>
+          <ul class="Steps">
+            <li>define('DYNAMIC_FILTER_MANUFACTURER_GROUP','Brand');<br>
+              define('DYNAMIC_FILTER_CATEGORY_GROUP','Category');<br>
+              define('DYNAMIC_FILTER_PRICE_GROUP','Price');</li>
+          </ul>
+          <p>All other querystring names are generated by taking the name of the attribute (e.g, if your products have an attribute of size, the querystring name would be 'fltSize') so these can only be changed by changing the attribute name.</p>
+          <p><a href="#top">Back to top</a></p>
+          <hr style="text-align:center; width:75%">
+
+          <h4><a name="uri-mapping" id="uri-mapping"></a>I have URI mapping software installed in my store. Does this modification work with URI mapping?</h4>
+          <p>Dynamic Filter has been tested and is fully working with Ceon URI mapping version 4.0.7 but should work with earlier versions of this software too.<br>
+            It has not been tested but shouldn't be too hard to modify to work  with any other mapping software.<br>
+            Only the file below would need to be editted. Scanning this file for 'CEON' will show the specific code edits that allow Dynamic Filter to work with Ceon URI mapping. </p>
+          <ul class="Steps">
+            <li>includes/templates/YOUR_TEMPLATE/sideboxes/tpl_dynamic_filter.php</li>
+          </ul>
+          <p><a href="#top">Back to top</a></p>
+          <hr style="text-align:center; width:75%">
+
+          <h4><a name="hooking-into-the-filter" id="hooking-into-the-filter"></a>Is it possible to hook into Dynamic Filter, to redirect banner ads to a pre-filtered list for example?</h4>
+          <p>You can easily hook in to the Dynamic Filter by simply adding the required filters to the end of the querystring.<br>
+            For example, if your store sells jackets and pants and you would like to direct a banner ad to New Jackets and Pants you could use the following in the Banner URL </p>
+          <ul class="Steps">
+            <li>/index.php?main_page=products_new&amp;fltCategory[]=xx&amp;fltCategory[]=yy</li>
+          </ul>
+          <p> If you are using Ceon URI mapping software, you would (assuming your 'products_new' page is mapped to 'NewProducts') use</p>
+          <ul class="Steps">
+            <li>/NewProducts?fltCategory[]=xx&amp;fltCategory[]=yy</li>
+          </ul>
+          <p> You would just need to replace 'xx' with your Jackets category ID and 'yy' with your Pants category ID.</p>
+          <p>You can also hook in to the filter with php.<br>
+            For example if you had a category called 'Jeans' and within that category you sold Levis jeans, you could add the link  'More Levis Jeans' to the product page to direct customers to view more Levis jeans as follows</p>
+          <ul class="Steps">
+            <li>echo '&lt;a rel=&quot;nofollow&quot; href=&quot;' . zen_href_link(FILENAME_DEFAULT, 'cPath=' . $cPath . '&amp;' . DYNAMIC_FILTER_PREFIX . DYNAMIC_FILTER_MANUFACTURER_GROUP . '[]=' . zen_get_products_manufacturers_id($products_id_current), 'NONSSL') . '&quot;&gt;' . 'More ' . $manufacturers_name . ' ' . $categories-&gt;fields['categories_name'] . '&lt;/a&gt;';</li>
+          </ul>
+          <p class="BackToTableOfContents"><a href="#top">Back to top</a></p>
+        </div>
+      </div>
+      <!--End sc4-->
+
+      <!--Begin sc5-->
+      <div class="tabcontent" id="sc5" style="display: block;">
+        <div class="textcontent">
+          <h3>CREDITS &amp; HISTORY</h3>
+          <br>
+          <strong>v1.0.0</strong> by Zen4All
+          <br>
+          <ul style="margin-top:0">
+            <li>Initial release</li>
+          </ul>
+          <br>
+          Tested on:
+          <ul style="margin-top:0">
+            <li>Zen Cart 1.5.4</li>
+            <li>php 5.5.9</li>
+            <li>MySQL 5.5.43</li>
+          </ul>
+        </div>
+      </div>
+      <!--End sc5-->
+
+      <!--Begin sc6-->
+      <div class="tabcontent" id="sc6" style="display: block;">
+        <div class="textcontent">
+          <h3>LICENSE</h3>
+          <pre>                    GNU GENERAL PUBLIC LICENSE
+                       Version 2, June 1991
+
+ Copyright (C) 1989, 1991 Free Software Foundation, Inc., http://fsf.org/
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.</pre>
+
+          <p><strong>Always backup your shop and database before making changes.</strong></p>
+        </div>
+      </div>
+      <!--End sc6-->
+
+    </div>
+    <!--end tabcontainer-->
+    <script type="text/javascript">document.getElementById('sc2').style.display = 'none';
+      document.getElementById('sc3').style.display = 'none';
+      document.getElementById('sc4').style.display = 'none';
+      document.getElementById('sc5').style.display = 'none';
+      document.getElementById('sc6').style.display = 'none';
+      ShowTabs();
+      // We only show the tab links if JavaScript is available/active.
+      if (document.getElementById("slidetabsmenu") != null) {
+        document.getElementById('slidetabsmenu').style.display = "block";
+      }
+    </script>
+  </body>
+</html>
