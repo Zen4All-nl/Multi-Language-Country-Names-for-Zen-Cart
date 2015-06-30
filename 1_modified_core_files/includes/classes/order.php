@@ -248,7 +248,7 @@ class order extends base {
 
     $this->content_type = $_SESSION['cart']->get_content_type();
 
-// BOF Zen4All Multi Language Country Names 1 of XXX
+// BOF Zen4All Multi Language Country Names 1 of 3
     $customer_address_query = "select c.customers_firstname, c.customers_lastname, c.customers_telephone,
                                     c.customers_email_address, ab.entry_company, ab.entry_street_address,
                                     ab.entry_suburb, ab.entry_postcode, ab.entry_city, ab.entry_zone_id,
@@ -263,11 +263,11 @@ class order extends base {
                                    and ab.customers_id = '" . (int)$_SESSION['customer_id'] . "'
                                    and c.customers_default_address_id = ab.address_book_id
                                    and con.language_id = '" . (int)$_SESSION['languages_id'] . "'";
-// EOF Zen4All Multi Language Country Names 1 of XXX
+// EOF Zen4All Multi Language Country Names 1 of 3
 
     $customer_address = $db->Execute($customer_address_query);
 
-// BOF Zen4All Multi Language Country Names 2 of XXX
+// BOF Zen4All Multi Language Country Names 2 of 3
     $shipping_address_query = "select ab.entry_firstname, ab.entry_lastname, ab.entry_company,
                                     ab.entry_street_address, ab.entry_suburb, ab.entry_postcode,
                                     ab.entry_city, ab.entry_zone_id, z.zone_name, ab.entry_country_id,
@@ -280,11 +280,11 @@ class order extends base {
                                    where ab.customers_id = '" . (int)$_SESSION['customer_id'] . "'
                                    and ab.address_book_id = '" . (int)$_SESSION['sendto'] . "'
                                    and con.language_id = '" . (int)$_SESSION['languages_id'] . "'";
-// EOF Zen4All Multi Language Country Names 2 of XXX
+// EOF Zen4All Multi Language Country Names 2 of 3
 
     $shipping_address = $db->Execute($shipping_address_query);
 
-// BOF Zen4All Multi Language Country Names 3 of XXX
+// BOF Zen4All Multi Language Country Names 3 of 3
     $billing_address_query = "select ab.entry_firstname, ab.entry_lastname, ab.entry_company,
                                    ab.entry_street_address, ab.entry_suburb, ab.entry_postcode,
                                    ab.entry_city, ab.entry_zone_id, z.zone_name, ab.entry_country_id,
@@ -297,7 +297,7 @@ class order extends base {
                                   where ab.customers_id = '" . (int)$_SESSION['customer_id'] . "'
                                   and ab.address_book_id = '" . (int)$_SESSION['billto'] . "'
                                   and con.language_id = '" . (int)$_SESSION['languages_id'] . "'";
-// EOF Zen4All Multi Language Country Names 3 of XXX
+// EOF Zen4All Multi Language Country Names 3 of 3
 
     $billing_address = $db->Execute($billing_address_query);
 
