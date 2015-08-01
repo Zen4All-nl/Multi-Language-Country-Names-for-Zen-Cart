@@ -108,11 +108,11 @@
                     </tr>
                     <?php
 // BOF Zen4All Multi Language Country Names 1 of 1
-  $zones_query_raw = "SELECT z.zone_id, c.countries_id, c.countries_name, z.zone_name, z.zone_code, z.zone_country_id
-                      FROM " . TABLE_ZONES . " z, " . TABLE_COUNTRIES_NAME . " c
-                      WHERE z.zone_country_id = c.countries_id
+  $zones_query_raw = "SELECT z.zone_id, cn.countries_id, cn.countries_name, z.zone_name, z.zone_code, z.zone_country_id
+                      FROM " . TABLE_ZONES . " z, " . TABLE_COUNTRIES_NAME . " cn
+                      WHERE z.zone_country_id = cn.countries_id
                       AND language_id = '" . (int)$_SESSION['languages_id'] . "'
-                      ORDER BY c.countries_name, z.zone_name";
+                      ORDER BY cn.countries_name, z.zone_name";
 // EOF Zen4All Multi Language Country Names 1 of 1
   $zones_split = new splitPageResults($_GET['page'], MAX_DISPLAY_SEARCH_RESULTS, $zones_query_raw, $zones_query_numrows);
   $zones = $db->Execute($zones_query_raw);

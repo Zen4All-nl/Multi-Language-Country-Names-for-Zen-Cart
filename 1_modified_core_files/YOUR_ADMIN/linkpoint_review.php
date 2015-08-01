@@ -273,7 +273,7 @@ if ($_GET['page'] == '' and $_GET['cID'] != '') {
         $country = $db->Execute("SELECT countries_name
                                  FROM " . TABLE_COUNTRIES_NAME . "
                                  WHERE countries_id = '" . (int)$customers->fields['entry_country_id'] . "'
-                                 AND con.language_id = '" . (int)$_SESSION['languages_id'] . "'");
+                                 AND language_id = '" . (int)$_SESSION['languages_id'] . "'");
 // EOF Zen4All Multi Language Country Names 1 of 1
         if (!is_array($country->fields)) $country->fields = array();
 

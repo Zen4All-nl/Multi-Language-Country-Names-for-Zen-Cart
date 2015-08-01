@@ -1784,10 +1784,10 @@ class paypalwpp extends base {
 
     // Get the customer's country ID based on name or ISO code
 // BOF Zen4All Multi Language Country Names 1 of 3
-    $sql = "SELECT c.countries_id, c.address_format_id, c.countries_iso_code_2, c.countries_iso_code_3
+    $sql = "SELECT c.countries_id, address_format_id, countries_iso_code_2, countries_iso_code_3
                 FROM " . TABLE_COUNTRIES . " c, " . TABLE_COUNTRIES_NAME . " cn
-                WHERE c.countries_iso_code_2 = :countryId
-                   OR cn.countries_name = :countryId
+                WHERE (countries_iso_code_2 = :countryId
+                   OR cn.countries_name = :countryId)
                 AND cn.countries_id = c.countries_id
                 AND cn.language_id = '" . (int)$_SESSION['languages_id'] . "'
                 LIMIT 1";
@@ -2272,12 +2272,12 @@ class paypalwpp extends base {
     // first get the zone id's from the 2 digit iso codes
     // country first
 // BOF Zen4All Multi Language Country Names 2 of 3
-    $sql = "SELECT c.countries_id, c.address_format_id
+    $sql = "SELECT c.countries_id, address_format_id
                 FROM " . TABLE_COUNTRIES . " c, " . TABLE_COUNTRIES_NAME . " cn
-                WHERE c.countries_iso_code_2 = :countryCode:
+                WHERE (countries_iso_code_2 = :countryCode:
                 OR cn.countries_name = :countryName:
-                OR c.countries_iso_code_2 = :countryName:
-                OR cn.countries_name = :countryCode:
+                OR countries_iso_code_2 = :countryName:
+                OR cn.countries_name = :countryCode:)
                 AND cn.countries_id = c.countries_id
                 AND cn.language_id = '" . (int)$_SESSION['languages_id'] . "'
                 LIMIT 1";
@@ -2432,12 +2432,12 @@ class paypalwpp extends base {
     // first get the zone id's from the 2 digit iso codes
     // country first
 // BOF Zen4All Multi Language Country Names 3 of 3
-    $sql = "SELECT c.countries_id, c.address_format_id
+    $sql = "SELECT c.countries_id, address_format_id
                 FROM " . TABLE_COUNTRIES . " c, " . TABLE_COUNTRIES_NAME . " cn
-                WHERE c.countries_iso_code_2 = :countryCode:
-                OR c.countries_name = :countryName:
-                OR c.countries_iso_code_2 = :countryName:
-                OR cn.countries_name = :countryCode:
+                WHERE (countries_iso_code_2 = :countryCode:
+                OR cn.countries_name = :countryName:
+                OR countries_iso_code_2 = :countryName:
+                OR cn.countries_name = :countryCode:)
                 AND cn.countries_id = c.countries_id
                 AND cn.language_id = '" . (int)$_SESSION['languages_id'] . "'
                 LIMIT 1";

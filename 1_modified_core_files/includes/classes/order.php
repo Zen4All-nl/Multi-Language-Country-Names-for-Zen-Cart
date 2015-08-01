@@ -252,17 +252,17 @@ class order extends base {
     $customer_address_query = "select c.customers_firstname, c.customers_lastname, c.customers_telephone,
                                     c.customers_email_address, ab.entry_company, ab.entry_street_address,
                                     ab.entry_suburb, ab.entry_postcode, ab.entry_city, ab.entry_zone_id,
-                                    z.zone_name, co.countries_id, con.countries_name,
+                                    z.zone_name, co.countries_id, cn.countries_name,
                                     co.countries_iso_code_2, co.countries_iso_code_3,
                                     co.address_format_id, ab.entry_state
                                    from (" . TABLE_CUSTOMERS . " c, " . TABLE_ADDRESS_BOOK . " ab )
                                    left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id)
                                    left join " . TABLE_COUNTRIES . " co on (ab.entry_country_id = co.countries_id)
-                                   left join " . TABLE_COUNTRIES_NAME . " con on (ab.entry_country_id = con.countries_id)
+                                   left join " . TABLE_COUNTRIES_NAME . " cn on (c.countries_id = cn.countries_id)
                                    where c.customers_id = '" . (int)$_SESSION['customer_id'] . "'
                                    and ab.customers_id = '" . (int)$_SESSION['customer_id'] . "'
                                    and c.customers_default_address_id = ab.address_book_id
-                                   and con.language_id = '" . (int)$_SESSION['languages_id'] . "'";
+                                   and cn.language_id = '" . (int)$_SESSION['languages_id'] . "'";
 // EOF Zen4All Multi Language Country Names 1 of 3
 
     $customer_address = $db->Execute($customer_address_query);
@@ -271,15 +271,15 @@ class order extends base {
     $shipping_address_query = "select ab.entry_firstname, ab.entry_lastname, ab.entry_company,
                                     ab.entry_street_address, ab.entry_suburb, ab.entry_postcode,
                                     ab.entry_city, ab.entry_zone_id, z.zone_name, ab.entry_country_id,
-                                    c.countries_id, con.countries_name, c.countries_iso_code_2,
+                                    c.countries_id, cn.countries_name, c.countries_iso_code_2,
                                     c.countries_iso_code_3, c.address_format_id, ab.entry_state
                                    from " . TABLE_ADDRESS_BOOK . " ab
                                    left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id)
                                    left join " . TABLE_COUNTRIES . " c on (ab.entry_country_id = c.countries_id)
-                                   left join " . TABLE_COUNTRIES_NAME . " con on (ab.entry_country_id = con.countries_id)
+                                   left join " . TABLE_COUNTRIES_NAME . " cn on (c.countries_id = cn.countries_id)
                                    where ab.customers_id = '" . (int)$_SESSION['customer_id'] . "'
                                    and ab.address_book_id = '" . (int)$_SESSION['sendto'] . "'
-                                   and con.language_id = '" . (int)$_SESSION['languages_id'] . "'";
+                                   and cn.language_id = '" . (int)$_SESSION['languages_id'] . "'";
 // EOF Zen4All Multi Language Country Names 2 of 3
 
     $shipping_address = $db->Execute($shipping_address_query);
@@ -288,15 +288,15 @@ class order extends base {
     $billing_address_query = "select ab.entry_firstname, ab.entry_lastname, ab.entry_company,
                                    ab.entry_street_address, ab.entry_suburb, ab.entry_postcode,
                                    ab.entry_city, ab.entry_zone_id, z.zone_name, ab.entry_country_id,
-                                   c.countries_id, con.countries_name, c.countries_iso_code_2,
+                                   c.countries_id, cn.countries_name, c.countries_iso_code_2,
                                    c.countries_iso_code_3, c.address_format_id, ab.entry_state
                                   from " . TABLE_ADDRESS_BOOK . " ab
                                   left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id)
                                   left join " . TABLE_COUNTRIES . " c on (ab.entry_country_id = c.countries_id)
-                                  left join " . TABLE_COUNTRIES_NAME . " con on (ab.entry_country_id = con.countries_id)
+                                  left join " . TABLE_COUNTRIES_NAME . " cn on (c.countries_id = cn.countries_id)
                                   where ab.customers_id = '" . (int)$_SESSION['customer_id'] . "'
                                   and ab.address_book_id = '" . (int)$_SESSION['billto'] . "'
-                                  and con.language_id = '" . (int)$_SESSION['languages_id'] . "'";
+                                  and cn.language_id = '" . (int)$_SESSION['languages_id'] . "'";
 // EOF Zen4All Multi Language Country Names 3 of 3
 
     $billing_address = $db->Execute($billing_address_query);
