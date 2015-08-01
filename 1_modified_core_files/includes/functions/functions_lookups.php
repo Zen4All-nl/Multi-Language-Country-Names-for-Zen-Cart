@@ -22,13 +22,13 @@
     if (zen_not_null($countries_id)) {
       $countries_array['countries_name'] = '';
 // BOF Zen4All Multi Language Country Names 1 of 2
-      $countries = "SELECT con.countries_name, co.countries_iso_code_2, co.countries_iso_code_3
-                    FROM " . TABLE_COUNTRIES . " co, " . TABLE_COUNTRIES_NAME . " con
+      $countries = "SELECT cn.countries_name, countries_iso_code_2, countries_iso_code_3
+                    FROM " . TABLE_COUNTRIES . " co, " . TABLE_COUNTRIES_NAME . " cn
                     WHERE co.countries_id = '" . (int)$countries_id . "'
-                    AND con.countries_id = co.countries_id
-                    AND con.language_id = '" . (int)$_SESSION['languages_id'] . "'";
+                    AND cn.countries_id = co.countries_id
+                    AND cn.language_id = '" . (int)$_SESSION['languages_id'] . "'";
       if ($activeOnly) $countries .= " AND co.status != 0 ";
-      $countries .= " ORDER BY con.countries_name";
+      $countries .= " ORDER BY cn.countries_name";
 // EOF Zen4All Multi Language Country Names 1 of 2
       $countries_values = $db->Execute($countries);
 
@@ -45,12 +45,12 @@
       }
     } else {
 // BOF Zen4All Multi Language Country Names 2 of 2
-      $countries = "SELECT co.countries_id, con.countries_name
-                    FROM " . TABLE_COUNTRIES . " co, " . TABLE_COUNTRIES_NAME . " con";
+      $countries = "SELECT co.countries_id, cn.countries_name
+                    FROM " . TABLE_COUNTRIES . " co, " . TABLE_COUNTRIES_NAME . " cn";
       if ($activeOnly) $countries .= " WHERE co.status != 0 ";
-      $countries .= " AND con.countries_id = co.countries_id";
-      $countries .= " AND con.language_id = '" . (int)$_SESSION['languages_id'] . "'";
-      $countries .= " ORDER BY con.countries_name";
+      $countries .= " AND cn.countries_id = co.countries_id";
+      $countries .= " AND cn.language_id = '" . (int)$_SESSION['languages_id'] . "'";
+      $countries .= " ORDER BY cn.countries_name";
 // EOF Zen4All Multi Language Country Names 2 of 2
       $countries_values = $db->Execute($countries);
       while (!$countries_values->EOF) {
