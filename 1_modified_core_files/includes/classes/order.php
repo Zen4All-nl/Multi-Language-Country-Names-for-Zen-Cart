@@ -258,7 +258,7 @@ class order extends base {
                                    from (" . TABLE_CUSTOMERS . " c, " . TABLE_ADDRESS_BOOK . " ab )
                                    left join " . TABLE_ZONES . " z on (ab.entry_zone_id = z.zone_id)
                                    left join " . TABLE_COUNTRIES . " co on (ab.entry_country_id = co.countries_id)
-                                   left join " . TABLE_COUNTRIES_NAME . " cn on (c.countries_id = cn.countries_id)
+                                   left join " . TABLE_COUNTRIES_NAME . " cn on (co.countries_id = cn.countries_id)
                                    where c.customers_id = '" . (int)$_SESSION['customer_id'] . "'
                                    and ab.customers_id = '" . (int)$_SESSION['customer_id'] . "'
                                    and c.customers_default_address_id = ab.address_book_id
