@@ -191,7 +191,7 @@ if (zen_not_null($action)) {
               </thead>
               <tbody>
                   <?php
-/* BOF Zen4All Multi Language Country Names 1 of 2 */
+                  /* BOF Zen4All Multi Language Country Names 1 of 1 */
                   $zones_query_raw = "SELECT a.association_id, a.zone_country_id, cn.countries_name, a.zone_id, a.geo_zone_id, a.last_modified, a.date_added, z.zone_name
                                       FROM (" . TABLE_ZONES_TO_GEO_ZONES . " a
                                         LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON a.zone_country_id = cn.countries_id
@@ -199,7 +199,7 @@ if (zen_not_null($action)) {
                                       WHERE a.geo_zone_id = " . (int)$_GET['zID'] . "
                                       AND cn.language_id = " . (int)$_SESSION['languages_id'] . "
                                       ORDER BY cn.countries_name, association_id";
-/* EOF Zen4All Multi Language Country Names 1 of 2 */
+                  /* EOF Zen4All Multi Language Country Names 1 of 1 */
 // Split Page
 // reset page when page is unknown
                   if ((!isset($_GET['spage']) or $_GET['spage'] == '' or $_GET['spage'] == '1') && !empty($_GET['sID'])) {
@@ -218,15 +218,6 @@ if (zen_not_null($action)) {
                     }
                   }
                   $rows = 0;
-// BOF Zen4All Multi Language Country Names 2 of 2
-    $zones_query_raw = "SELECT a.association_id, a.zone_country_id, cn.countries_name, a.zone_id, a.geo_zone_id, a.last_modified, a.date_added, z.zone_name
-                        FROM (" . TABLE_ZONES_TO_GEO_ZONES . " a
-                        LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON a.zone_country_id = cn.countries_id
-                        LEFT JOIN " . TABLE_ZONES . " z ON a.zone_id = z.zone_id)
-                        WHERE a.geo_zone_id = " . (int)$_GET['zID'] . "
-                        AND cn.language_id = '" . (int)$_SESSION['languages_id'] . "'
-                        ORDER BY cn.countries_name, association_id";
-// EOF Zen4All Multi Language Country Names 2 of 2
                   $zones_split = new splitPageResults($_GET['spage'], MAX_DISPLAY_SEARCH_RESULTS, $zones_query_raw, $zones_query_numrows);
                   $zones = $db->Execute($zones_query_raw);
                   foreach ($zones as $zone) {

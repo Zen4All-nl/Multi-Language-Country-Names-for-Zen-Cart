@@ -177,22 +177,18 @@ if (zen_not_null($action)) {
                                 '" . zen_db_input($ezpage['pages_html_text']) . "')");
         }
 
-// BOF Zen4All Multi Language Country Names 1 of 2
-// create additional countries_name records
-          $countries_name = $db->Execute("SELECT c.countries_id, cn.countries_name
-                                      FROM " . TABLE_COUNTRIES . " c
-                                      LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON c.countries_id = cn.countries_id
-                                      WHERE cn.language_id = '" . (int)$_SESSION['languages_id'] . "'");
+        /* BOF Zen4All Multi Language Country Names 1 of 2 */
+        // create additional countries_name records
+        $countries_names = $db->Execute("SELECT c.countries_id, cn.countries_name
+                                         FROM " . TABLE_COUNTRIES . " c
+                                         LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON c.countries_id = cn.countries_id
+                                           AND cn.language_id = " . (int)$_SESSION['languages_id']);
 
-          while (!$countries_name->EOF) {
-            $db->Execute("INSERT INTO " . TABLE_COUNTRIES_NAME . "
-                          (countries_id, language_id, countries_name)
-                          values ('" . (int)$countries_name->fields['countries_id'] . "',
-                                  '" . (int)$insert_id . "',
-                                  '" . zen_db_input($countries_name->fields['countries_name']) . "')");
-            $countries_name->MoveNext();
-          }
-// EOF Zen4All Multi Language Country Names 1 of 2
+        foreach ($countries_names as $countries_name) {
+          $db->Execute("INSERT INTO " . TABLE_COUNTRIES_NAME . " (countries_id, language_id, countries_name)
+                        VALUES (" . (int)$countries_name['countries_id'] . ", " . (int)$insert_id . ", '" . zen_db_input($countries_name['countries_name']) . "')");
+        }
+        /* EOF Zen4All Multi Language Country Names 1 of 2 */
         $zco_notifier->notify('NOTIFY_ADMIN_LANGUAGE_INSERT', (int)$insert_id);
 
         zen_redirect(zen_href_link(FILENAME_LANGUAGES, (isset($_GET['page']) ? 'page=' . $_GET['page'] . '&' : '') . 'lID=' . $insert_id));
@@ -261,9 +257,9 @@ if (zen_not_null($action)) {
       $db->Execute("DELETE FROM " . TABLE_META_TAGS_PRODUCTS_DESCRIPTION . " WHERE language_id = " . (int)$lID);
       $db->Execute("DELETE FROM " . TABLE_METATAGS_CATEGORIES_DESCRIPTION . " WHERE language_id = " . (int)$lID);
       $db->Execute("DELETE FROM " . TABLE_EZPAGES_CONTENT . " WHERE languages_id = " . (int)$lID);
-/* BOF Zen4All Multi Language Country Names 2 of 2 */
+      /* BOF Zen4All Multi Language Country Names 2 of 2 */
       $db->Execute("DELETE FROM " . TABLE_COUNTRIES_NAME . " WHERE language_id = " . (int)$lID);
-/* EOF Zen4All Multi Language Country Names 2 of 2 */
+      /* EOF Zen4All Multi Language Country Names 2 of 2 */
 
       // if we just deleted our currently-selected language, need to switch to default lang:
       $lng = $db->Execute("SELECT languages_id

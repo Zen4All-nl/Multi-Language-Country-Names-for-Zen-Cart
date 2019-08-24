@@ -1249,12 +1249,12 @@ if (zen_not_null($action)) {
                     }
 
                     if ((!isset($_GET['cID']) || (isset($_GET['cID']) && ($_GET['cID'] == $customer['customers_id']))) && !isset($cInfo)) {
-// BOF Zen4All Multi Language Country Names 1 of 1
+                      /* BOF Zen4All Multi Language Country Names 1 of 1 */
                       $country = $db->Execute("SELECT countries_name
                                          FROM " . TABLE_COUNTRIES_NAME . "
                                          WHERE countries_id = " . (int)$customer['entry_country_id'] . "
                                          AND language_id = " . (int)$_SESSION['languages_id']);
-// EOF Zen4All Multi Language Country Names 1 of 1
+                      /* EOF Zen4All Multi Language Country Names 1 of 1 */
 
                       $reviews = $db->Execute("SELECT COUNT(*) AS number_of_reviews
                                          FROM " . TABLE_REVIEWS . "
