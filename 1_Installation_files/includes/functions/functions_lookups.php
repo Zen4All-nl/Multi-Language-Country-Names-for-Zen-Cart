@@ -26,7 +26,7 @@
                     FROM " . TABLE_COUNTRIES . " co
                     LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.countries_id = co.countries_id
                       AND cn.language_id = " . (int)$_SESSION['languages_id'] ."
-                    WHERE co.countries_id = " . (int)$countries_id . ";
+                    WHERE co.countries_id = " . (int)$countries_id;
       if ($activeOnly) $countries .= " AND co.status != 0 ";
       $countries .= " ORDER BY cn.countries_name";
       /* EOF Zen4All Multi Language Country Names 1 of 2 */
@@ -36,9 +36,11 @@
         $countries_array['countries_iso_code_2'] = '';
         $countries_array['countries_iso_code_3'] = '';
         if (!$countries_values->EOF) {
-          $countries_array = array('countries_name' => $countries_values->fields['countries_name'],
-                                   'countries_iso_code_2' => $countries_values->fields['countries_iso_code_2'],
-                                   'countries_iso_code_3' => $countries_values->fields['countries_iso_code_3']);
+          $countries_array = array(
+            'countries_name' => $countries_values->fields['countries_name'],
+            'countries_iso_code_2' => $countries_values->fields['countries_iso_code_2'],
+            'countries_iso_code_3' => $countries_values->fields['countries_iso_code_3']
+          );
         }
       } else {
         if (!$countries_values->EOF) $countries_array = array('countries_name' => $countries_values->fields['countries_name']);
@@ -48,8 +50,10 @@
       $countries = "SELECT co.countries_id, cn.countries_name
                     FROM " . TABLE_COUNTRIES . " co
                     LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.countries_id = co.countries_id
-                      AND cn.language_id = " . (int)$_SESSION['languages_id'] . ";
-      if ($activeOnly) $countries .= " WHERE co.status != 0 ";
+                      AND cn.language_id = " . (int)$_SESSION['languages_id'];
+      if ($activeOnly) {
+        $countries .= " WHERE co.status != 0 ";
+      }
       $countries .= " ORDER BY cn.countries_name";
       /* EOF Zen4All Multi Language Country Names 2 of 2 */
       $countries_values = $db->Execute($countries);
