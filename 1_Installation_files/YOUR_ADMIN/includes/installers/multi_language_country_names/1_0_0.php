@@ -35,14 +35,14 @@ $selectCountryNamesQuery = "SELECT countries_id, countries_name
 
 $languages = zen_get_languages();
 
-for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
+for ($i = 0, $n = sizeof($languages); $i < $n; $i++) {
   $selectCountryNames = $db->Execute($selectCountryNamesQuery);
   $language_id = $languages[$i]['id'];
-  while(!$selectCountryNames->EOF) {
-    $countryNameArray = array(countries_id => $selectCountryNames->fields['countries_id'],
-                                language_id => $language_id,
-                                countries_name => $selectCountryNames->fields['countries_name']);
-    $selectCountryNames->MoveNext();
+  foreach ($selectCountryNames as $selectCountryName) {
+    $countryNameArray = array(
+      'countries_id' => $selectCountryName['countries_id'],
+      'language_id' => $language_id,
+      'countries_name' => $selectCountryName['countries_name']);
     zen_db_perform(TABLE_COUNTRIES_NAME, $countryNameArray);
   }
 }
