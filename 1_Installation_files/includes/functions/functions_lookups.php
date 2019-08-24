@@ -26,7 +26,7 @@
                     FROM " . TABLE_COUNTRIES . " co
                     LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.countries_id = co.countries_id
                       AND cn.language_id = " . (int)$_SESSION['languages_id'] ."
-                    WHERE co.countries_id = " . (int)$countries_id . ";
+                    WHERE co.countries_id = " . (int)$countries_id;
       if ($activeOnly) $countries .= " AND co.status != 0 ";
       $countries .= " ORDER BY cn.countries_name";
       /* EOF Zen4All Multi Language Country Names 1 of 2 */
