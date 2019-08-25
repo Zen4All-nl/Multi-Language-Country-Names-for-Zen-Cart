@@ -92,7 +92,7 @@ if (zen_not_null($action)) {
 /* BOF Zen4All Multi Language Country Names 1 of 1 */
   $zones_query_raw = "SELECT z.zone_id, cn.countries_id, cn.countries_name, z.zone_name, z.zone_code, z.zone_country_id
                       FROM " . TABLE_ZONES . " z
-                      LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.zone_country_id = z.countries_id
+                      LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.countries_id = z.zone_country_id
                         AND cn.language_id = " . (int)$_SESSION['languages_id'] . "
                       ORDER BY cn.countries_name, z.zone_name";
 /* EOF Zen4All Multi Language Country Names 1 of 1 */
