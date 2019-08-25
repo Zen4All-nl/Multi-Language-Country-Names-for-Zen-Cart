@@ -222,7 +222,7 @@ if (zen_not_null($action)) {
                 /* BOF Zen4All Multi Language Country Names 7 of 9 */
                 $contents[] = array('text' => '<br>' . zen_draw_label(TEXT_INFO_COUNTRY_NAME, 'countries_name', 'class="control-label"'));
                 for ($i=0, $n=sizeof($languages); $i<$n; $i++){
-                  $contents[] = array('text' => '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('countries_name[' . $languages[$i]['id'] . ']', '', 'class="form-control"'));
+                  $contents[] = array('text' => '<br><div class="input-group"><div class="input-group-addon">' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '</div>' . zen_draw_input_field('countries_name[' . $languages[$i]['id'] . ']', '', 'class="form-control"') . '</div>');
                 }
                 /* EOF Zen4All Multi Language Country Names 7of 9 */
                 $contents[] = array('text' => '<br>' . zen_draw_label(TEXT_INFO_COUNTRY_CODE_2, 'countries_iso_code_2', 'class="control-label"') . zen_draw_input_field('countries_iso_code_2', '', 'class="form-control"'));
@@ -238,7 +238,7 @@ if (zen_not_null($action)) {
                 /* BOF Zen4All Multi Language Country Names 8 of 9 */
                 $contents[] = array('text' => '<br>' . zen_draw_label(TEXT_INFO_COUNTRY_NAME, 'countries_name', 'class="control-label"'));
                 for ($i=0, $n=sizeof($languages); $i<$n; $i++){
-                  $contents[] = array('text' => '<br>' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '&nbsp;' . zen_draw_input_field('countries_name[' . $languages[$i]['id'] . ']', htmlspecialchars(zen_get_country_name($cInfo->countries_id, $languages[$i]['id']), ENT_COMPAT, CHARSET, TRUE), 'class="form-control"'));
+                  $contents[] = array('text' => '<br><div class="input-group"><div class="input-group-addon">' . zen_image(DIR_WS_CATALOG_LANGUAGES . $languages[$i]['directory'] . '/images/' . $languages[$i]['image'], $languages[$i]['name']) . '</div>' . zen_draw_input_field('countries_name[' . $languages[$i]['id'] . ']', htmlspecialchars(zen_get_country_name($cInfo->countries_id, $languages[$i]['id']), ENT_COMPAT, CHARSET, TRUE), 'class="form-control"') . '</div>');
                 }
                 /* EOF Zen4All Multi Language Country Names 8 of 9 */
                 $contents[] = array('text' => '<br>' . zen_draw_label(TEXT_INFO_COUNTRY_CODE_2, 'countries_iso_code_2', 'class="control-label"') . zen_draw_input_field('countries_iso_code_2', $cInfo->countries_iso_code_2, 'class="form-control"'));
