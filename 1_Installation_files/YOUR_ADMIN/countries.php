@@ -26,26 +26,20 @@ if (zen_not_null($action)) {
 
       /* BOF Zen4All Multi Language Country Names 3 of 9 */
       $db->Execute("INSERT INTO " . TABLE_COUNTRIES . " (countries_iso_code_2, countries_iso_code_3, status, address_format_id)
-                    VALUES ('" . zen_db_input($countries_iso_code_2) . "',
-                            '" . zen_db_input($countries_iso_code_3) . "',
-                            '" . (int)$status . "',
-                            '" . (int)$address_format_id . "')");
+                    VALUES ('" . zen_db_input($countries_iso_code_2) . "', '" . zen_db_input($countries_iso_code_3) . "', " . (int)$status . ", " . (int)$address_format_id . ")");
 
+      $countries_id = $db->insert_ID();
       for ($i=0, $n=sizeof($languages); $i<$n; $i++) {
         $countries_name_array = $_POST['countries_name'];
         $language_id = $languages[$i]['id'];
-        $sql_data_array = array('countries_name' => zen_db_prepare_input($countries_name_array[$language_id]));
-        $countries_id_lookup = $db->Execute("SELECT countries_id
-                                             FROM " . TABLE_COUNTRIES . "
-                                             WHERE countries_iso_code_2 = '" . zen_db_input($countries_iso_code_2) . "'");
-        $countries_id = $countries_id_lookup->fields['countries_id'];
+
         $insert_sql_data = array(
           'countries_id' => $countries_id,
-          'language_id' => $language_id
+          'language_id' => $language_id,
+          'countries_name' => zen_db_prepare_input($countries_name_array[$language_id])
         );
 
-        $sql_data_array_merged = array_merge($sql_data_array, $insert_sql_data);
-        zen_db_perform(TABLE_COUNTRIES_NAME, $sql_data_array_merged);
+        zen_db_perform(TABLE_COUNTRIES_NAME, $insert_sql_data);
       }
       /* EOF Zen4All Multi Language Country Names 3 of 9 */
       zen_record_admin_activity('Country added: ' . $countries_iso_code_3, 'info');
