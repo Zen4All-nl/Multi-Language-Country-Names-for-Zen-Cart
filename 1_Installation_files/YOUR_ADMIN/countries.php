@@ -11,7 +11,7 @@ require('includes/application_top.php');
 $action = (isset($_GET['action']) ? $_GET['action'] : '');
 
 /* BOF Zen4All Multi Language Country Names 1 of 10 */
-  $languages = zen_get_languages();
+$languages = zen_get_languages();
 /* EOF Zen4All Multi Language Country Names 1 of 10 */
 if (zen_not_null($action)) {
   switch ($action) {

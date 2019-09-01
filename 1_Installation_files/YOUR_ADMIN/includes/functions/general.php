@@ -381,19 +381,16 @@
   }
 
 
-/* BOF Zen4All Multi Language Country Names 1 of 3 */
-  function zen_get_country_name($country_id, $language_id = '') {
+  /* BOF Zen4All Multi Language Country Names 1 of 3 */
+  function zen_get_country_name($country_id, $lang_id = '') {
     global $db;
 
-    if (!$language_id) {
-      $language_id = $_SESSION['languages_id'];
-    }
+    $language_id = (empty($lang_id) ? (int)$_SESSION['languages_id'] : $lang_id);
 
     $country = $db->Execute("SELECT countries_name
                              FROM " . TABLE_COUNTRIES_NAME . "
                              WHERE countries_id = " . (int)$country_id . "
                              AND language_id = " . (int)$language_id);
-/* EOF Zen4All Multi Language Country Names 1 of 3 */
 
     if ($country->RecordCount() < 1) {
       return $country_id;
@@ -401,16 +398,16 @@
       return $country->fields['countries_name'];
     }
   }
+/* EOF Zen4All Multi Language Country Names 1 of 3 */
 
-
-/* BOF Zen4All Multi Language Country Names 2 of 3 */
-  function zen_get_country_name_cfg($country_id) {
+  /* BOF Zen4All Multi Language Country Names 2 of 3 */
+  function zen_get_country_name_cfg($country_id, $lang_id = '') {
     global $db;
+    $language_id = (empty($lang_id) ? (int)$_SESSION['languages_id'] : $lang_id);
     $country = $db->Execute("SELECT countries_name
                              FROM " . TABLE_COUNTRIES_NAME . "
                              WHERE countries_id = " . (int)$country_id . "
-                             AND language_id = " . (int)$_SESSION['languages_id']);
-/* EOF Zen4All Multi Language Country Names 2 of 3 */
+                             AND language_id = " . (int)$language_id);
 
     if ($country->RecordCount() < 1) {
       return $country_id;
@@ -418,7 +415,7 @@
       return $country->fields['countries_name'];
     }
   }
-
+  /* EOF Zen4All Multi Language Country Names 2 of 3 */
 
   function zen_get_zone_name($country_id, $zone_id, $default_zone) {
     global $db;
@@ -757,12 +754,12 @@ function zen_get_prid($uprid)
       $countries_array[] = array('id' => '',
                                  'text' => $default);
     }
-/* BOF Zen4All Multi Language Country Names 3 of 3 */
+    /* BOF Zen4All Multi Language Country Names 3 of 3 */
     $countries = $db->Execute("SELECT countries_id, countries_name
                                FROM " . TABLE_COUNTRIES_NAME . "
                                WHERE language_id = " . (int)$_SESSION['languages_id'] . "
                                ORDER BY countries_name");
-/* BOF Zen4All Multi Language Country Names 3 of 3 */
+    /* BOF Zen4All Multi Language Country Names 3 of 3 */
 
     while (!$countries->EOF) {
       $countries_array[] = array('id' => $countries->fields['countries_id'],
