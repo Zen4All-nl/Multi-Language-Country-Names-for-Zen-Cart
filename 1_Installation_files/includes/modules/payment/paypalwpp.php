@@ -1922,12 +1922,12 @@ if (false) { // disabled until clarification is received about coupons in PayPal
     // Get the customer's country ID based on name or ISO code
 /* BOF Zen4All Multi Language Country Names 1 of 3 */
     $sql = "SELECT c.countries_id, c.address_format_id, c.countries_iso_code_2, c.countries_iso_code_3
-                FROM " . TABLE_COUNTRIES . " c,
-                LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.countries_id = c.countries_id
-                  AND cn.language_id = " . (int)$_SESSION['languages_id'] . "
-                WHERE c.countries_iso_code_2 = :countryId
-                   OR cn.countries_name = :countryId
-                LIMIT 1";
+            FROM " . TABLE_COUNTRIES . " c
+            LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.countries_id = c.countries_id
+              AND cn.language_id = " . (int)$_SESSION['languages_id'] . "
+            WHERE c.countries_iso_code_2 = :countryId
+            OR cn.countries_name = :countryId
+            LIMIT 1";
 /* EOF Zen4All Multi Language Country Names 1 of 3 */
     $sql1 = $db->bindVars($sql, ':countryId', $paypal_ec_payer_info['ship_country_name'], 'string');
     $country1 = $db->Execute($sql1);
@@ -2417,14 +2417,14 @@ if (false) { // disabled until clarification is received about coupons in PayPal
     // country first
     /* BOF Zen4All Multi Language Country Names 2 of 3 */
     $sql = "SELECT c.countries_id, c.address_format_id
-                FROM " . TABLE_COUNTRIES . " c
-                LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.countries_id = c.countries_id
-                  AND cn.language_id = " . (int)$_SESSION['languages_id'] . "
-                WHERE c.countries_iso_code_2 = :countryCode:
-                OR cn.countries_name = :countryName:
-                OR c.countries_iso_code_2 = :countryName:
-                OR cn.countries_name = :countryCode:
-                LIMIT 1";
+            FROM " . TABLE_COUNTRIES . " c
+            LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.countries_id = c.countries_id
+              AND cn.language_id = " . (int)$_SESSION['languages_id'] . "
+            WHERE c.countries_iso_code_2 = :countryCode:
+            OR cn.countries_name = :countryName:
+            OR c.countries_iso_code_2 = :countryName:
+            OR cn.countries_name = :countryCode:
+            LIMIT 1";
     /* EOF Zen4All Multi Language Country Names 2 of 3 */
     $sql = $db->bindVars($sql, ':countryCode:', $address_question_arr['country']['iso_code_2'], 'string');
     $sql = $db->bindVars($sql, ':countryName:', $address_question_arr['country']['title'], 'string');
@@ -2581,9 +2581,9 @@ if (false) { // disabled until clarification is received about coupons in PayPal
             LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON cn.countries_id = c.countries_id
               AND cn.language_id = " . (int)$_SESSION['languages_id'] . "
             WHERE c.countries_iso_code_2 = :countryCode:
-              OR cn.countries_name = :countryName:
-              OR c.countries_iso_code_2 = :countryName:
-              OR cn.countries_name = :countryCode:
+            OR cn.countries_name = :countryName:
+            OR c.countries_iso_code_2 = :countryName:
+            OR cn.countries_name = :countryCode:
             LIMIT 1";
     /* EOF Zen4All Multi Language Country Names 3 of 3 */
     $sql = $db->bindVars($sql, ':countryCode:', $address_question_arr['country']['iso_code_2'], 'string');
