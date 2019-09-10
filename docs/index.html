@@ -1,194 +1,501 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="content-language" content="en">
-    <title>Multi Language Country Names 1.1.0</title>
-
-    <link rel="stylesheet" type="text/css" href="includes/css/stylesheet.css">
-    <script type="text/javascript" src="includes/jscript/jscript_tabs.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Multi Language Country Names 1.2.0</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-    <div id="wrapper">
-      <h2>Multi Language Country Names 1.1.0</h2>
-      <p>Support thread: <a href="https://www.zen-cart.com/showthread.php?217524-Multi-Language-Country-Names-Support-Thread" target="_blank">https://www.zen-cart.com/showthread.php?217524-Multi-Language-Country-Names-Support-Thread</a><br />
-        Download link: <a href="http://www.zen-cart.com/downloads.php?do=file&amp;id=2006" target="_blank">http://www.zen-cart.com/downloads.php?do=file&amp;id=2006</a>
-      </p>
-      <div id="slidetabsmenu" style="display: none;">
-        <ul>
-          <li> <a onClick="expandcontent('sc1', this)" href="javascript:void(0)"><span>Overview</span></a></li>
-          <li> <a onClick="expandcontent('sc2', this)" href="javascript:void(0)"><span>Install/Un-install</span></a></li>
-          <li> <a onClick="expandcontent('sc3', this)" href="javascript:void(0)"><span>Configuration</span></a></li>
-          <li> <a onClick="expandcontent('sc4', this)" href="javascript:void(0)"><span>FAQs</span></a></li>
-          <li> <a onClick="expandcontent('sc5', this)" href="javascript:void(0)"><span>Credits &amp; History</span></a></li>
-          <li> <a onClick="expandcontent('sc6', this)" href="javascript:void(0)"><span>License</span></a></li>
-        </ul>
-      </div>
-      <br style="clear: both;">
-
-      <!--Begin tabcontainer-->
-      <div id="tabcontentcontainer">
-
-        <!--Begin sc1-->
-        <div class="tabcontent" id="sc1" style="display: block;">
-          <div class="textcontent">
-            <h3>OVERVIEW</h3>
-            <p><strong>Multi Language Country Names</strong> will allow you as a shop admin to enter country names in multiple languages. There will be a new entry for each installed language in your Zen Cart installaton.<br>
-              In the store front, language names will be shown based upon the selected language.<br>
-              When an accound is made, and/or an order is placed by a customer, the country name will be saved in that account/order, based on the selected language at the time of creation.</p>
+    <div class="container-fluid">
+      <div class="card bg-light">
+        <div class="card-header">
+          <h1>Multi Language Country Names 1.2.0</h1>
+          <div class="pos_rel">
+            <div id="downloads">
+              <a class="zip_download_link" href="https://github.com/Zen4All-nl/Multi-Language-Zone-Names-for-Zen-Cart/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Zen4All-nl/Multi-Language-Zone-Names-for-Zen-Cart/tarball/master">Download this project as a tar.gz file</a>
+            </div>
           </div>
         </div>
-        <!--End sc1-->
-
-        <!--Begin sc2-->
-        <div class="tabcontent" id="sc2" style="display: block;">
-          <div class="textcontent">
-            <h3>INSTALL/UNINSTALL</h3>
-            <p><b>!!!!!BACKUP YOUR STORE BEFORE YOU BEGIN!!!!!</b></p>
-            <p>Installation of the module has been made as simple as possible and shouldn't take long for any stores which have not already modified any of the core files which this module has to modify.<br>
-            All changes have been clearly marked by comments like this:</p>
-            <code>// BOF Zen4All Multi Language Country Names 1 of XXX<br />
-             "Some code"<br />
-             // EOF Zen4All Multi Language Country Names 1 of XXX</code>
-            <h4><u>Installation instructions</u></h4>
-            <p>Before you start you should rename all folders in the distribution named 'YOUR_TEMPLATE' to the template folder name you are using.</p>
-            <p>You will find 6 folders beneath in this instalation package, one modified core files, one contains new files, one contains the sql instalation files, on contains optional files (which is empty for now), one the sql uninstall filetemplate override files, and the last , which you obviously already found, the readme.</p>
-            <ol>
-              <li><strong>Modified Core Files</strong><br>
-              Quite a few core Zen Cart files must be modified for the multi lingual country names to work.<br>
-              If any of the core files this distribution uses have already been modified (because of another third party module being installed for example) then the changes for the respective files should be applied manually by copying across the appropriate sections of code required for the Multi Language Country Names module. These sections are clearly marked (with &ldquo;// BOF Zen4All Multi Language Country Names 1 of XXX&rdquo; and &ldquo;// eof dynamic filter x of x&rdquo; comments) within the sample files provided in this distribution and should be easy enough to copy across, especially if a &ldquo;diff&rdquo; software package (such as Beyondcompare or WinMerge) is used.<br>The modified files can be found within the 'core file overrides' folder in the distribution as follows.<br /><strong>Do not  make changes to your core files without taking a copy of them first so you can replace them later if needed!</strong>
-                <ul class="Steps">
-                  <li>includes/classes/order.php</li>
-                  <li>includes/extra_datafiles/multilanguage_country_names_database_names.php</li>
-                  <li>includes/functions/functions_lookups.php</li>
-                  <li>includes/modules/payment/paypalwpp.php</li>
-                  <li>YOUR_ADMIN/countries.php</li>
-                  <li>YOUR_ADMIN/customers.php</li>
-                  <li>YOUR_ADMIN/geo_zones.php</li>
-                  <li>YOUR_ADMIN/languages.php</li>
-                  <li><strike>YOUR_ADMIN/linkpoint_review.php</strike>(file has been removed from Zen Cart 1.5.5)</li>
-                  <li>YOUR_ADMIN/zones.php</li>
-                  <li>YOUR_ADMIN/includes/functions/general.php</li>
-                </ul>
-              </li>
-              <li><strong>New Files</strong><br />
-                Copy the renamed YOUR_ADMIN folder from the 'new files' folder into your store's main directory.<br>
-                The files are already in the correct directory structure, so a single drag-and-drop of the folder into the root directory for the store will put the files in the correct locations.<br>
-                <STRONG>Please do not copy the files individually</STRONG> - doing so often results in files being missed out!
-                <ul class="Steps">
-                  <li>YOUR_ADMIN/includes/extra_datafiles/multilanguage_country_names_database_names.php</li>
-                  <li>YOUR_ADMIN/includes/languages/english/extra_definitions/multi_language_country_names.php</li>
-                </ul>
-              </li>
-              <li>
-                <strong>Install</strong><br>Copy the renamed YOUR_ADMIN folder from the 'install' folder into your store's main directory.<br>
-                The files are already in the correct directory structure, so a single drag-and-drop of the folder into the root directory for the store will put the files in the correct locations.<br>
-                <STRONG>Please do not copy the files individually</STRONG> - doing so often results in files being missed out!
-                <ul class="Steps">
-                  <li>YOUR_ADMIN/includes/auto_loaders/config.multi_language_country_names.php</li>
-                  <li>YOUR_ADMIN/includes/functions/extra_functions/zen_cfg_read_only.php</li>
-                  <li>YOUR_ADMIN/includes/init_includes/init_multi_language_country_names.php</li>
-                  <li>YOUR_ADMIN/includes/installers/multi_language_country_names/1_0_0.php</li>
-                  <li>YOUR_ADMIN/includes/languages/english/extra_definitions/multi_language_country_names.php</li>
-                </ul>
-                <p>After copying these files, log in to your stores admin. The instalation script will now automatically create the needed database tables and settings. Also will it populate the new tables.</p>
-              </li>
-            </ol>
-            <p><a href="#top">Back to top</a></p>
-            <hr style="text-align:center; width:75%" />
-
-            <h4><a name="uninstall-all" id="uninstall-all"></a><u>Uninstall instructions</u></h4>
-            <p>If you do wish to remove the module, simply delete all the New Files loaded in step 2, delete (or replace with your original if the file was already present) Install Files loaded in step 3, then replace all the Modified Core Files loaded in step 1 with your original files.</p>
-            <p>Finally, run 'uninstall.sql' to remove the configuration, and multi language country name table.</p>
-            <p><a href="#top">Back to top</a></p>
-
+        <div class="card-body">
+          <ul class="nav nav-tabs" id="Tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="installation-tab" data-toggle="tab" href="#installation" role="tab" aria-controls="installation" aria-selected="false">Installation Instructions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="setup-tab" data-toggle="tab" href="#setup" role="tab" aria-controls="setup" aria-selected="false">Configuration</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="credits-tab" data-toggle="tab" href="#credits" role="tab" aria-controls="credits" aria-selected="false">Credits & History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="license-tab" data-toggle="tab" href="#license" role="tab" aria-controls="credits" aria-selected="false">License</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="TabContent">
+            <div class="text-right">
+              <a href="https://www.zen-cart.com/showthread.php?217524-Multi-Language-Country-Names-Support-Thread" title="Support Thread" target="_blank" class="btn btn-info" role="button">Support-Thread</a>
+              <a href="https://www.zen-cart.com/downloads.php?do=file&amp;id=2006" title="Download for Zen Cart" target="_blank" class="btn btn-info" role="button">Download for Zen Cart</a>
+            </div>
+            <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+              <p><strong>Multi Language Country Names</strong> will allow you as a shop admin to enter country names in multiple languages. There will be a new entry for each installed language in your Zen Cart installaton.<br>In the store front, language names will be shown based upon the selected language.<br>When an accound is made, and/or an order is placed by a customer, the country name will be saved in that account/order, based on the selected language at the time of creation.</p>
+            </div>
+            <div class="tab-pane fade" id="installation" role="tabpanel" aria-labelledby="installation-tab">
+              <h2>Installation</h2>
+              <ul class="nav nav-tabs" id="TabInstallation" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="new-install-tab" data-toggle="tab" href="#new-install" role="tab" aria-controls="new-install" aria-selected="true">New install</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="upgrade-tab" data-toggle="tab" href="#upgrade" role="tab" aria-controls="upgrade" aria-selected="false">Upgrade</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="un-install-tab" data-toggle="tab" href="#un-install" role="tab" aria-controls="un-install" aria-selected="false">Un-install</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="file-list-tab" data-toggle="tab" href="#file-list" role="tab" aria-controls="file-list" aria-selected="false">File List</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="TabInstallationContent">
+                <div class="tab-pane fade show active" id="new-install" role="tabpanel" aria-labelledby="new-install-tab">
+                  <h3>New install</h3>
+                  <p><b>!!!!!BACKUP YOUR STORE BEFORE YOU BEGIN!!!!!</b></p>
+                  <p>Installation of the module has been made as simple as possible and shouldn't take long for any stores which have not already modified any of the core files which this module has to modify.<br>
+                    All changes have been clearly marked by comments like this:</p>
+                  <code>// BOF Zen4All Multi Language Country Names 1 of XXX<br>
+                    "Some code"<br>
+                    // EOF Zen4All Multi Language Country Names 1 of XXX</code>
+                  <h4><u>Installation instructions</u></h4>
+                  <p>Before you start you should rename all folders in the distribution named 'YOUR_TEMPLATE' to the template folder name you are using.</p>
+                  <p>You will find 6 folders beneath in this instalation package, one modified core files, one contains new files, one contains the sql instalation files, on contains optional files (which is empty for now), one the sql uninstall filetemplate override files, and the last , which you obviously already found, the readme.</p>
+                  <ol>
+                    <li><strong>Modified Core Files</strong><br>
+                      Quite a few core Zen Cart files must be modified for the multi lingual country names to work.<br>
+                      If any of the core files this distribution uses have already been modified (because of another third party module being installed for example) then the changes for the respective files should be applied manually by copying across the appropriate sections of code required for the Multi Language Country Names module. These sections are clearly marked (with &ldquo;// BOF Zen4All Multi Language Country Names 1 of XXX&rdquo; and &ldquo;// eof dynamic filter x of x&rdquo; comments) within the sample files provided in this distribution and should be easy enough to copy across, especially if a &ldquo;diff&rdquo; software package (such as Beyondcompare or WinMerge) is used.<br>The modified files can be found within the 'core file overrides' folder in the distribution as follows.<br><strong>Do not  make changes to your core files without taking a copy of them first so you can replace them later if needed!</strong>
+                      <ul class="Steps">
+                        <li>includes/classes/order.php</li>
+                        <li>includes/extra_datafiles/multilanguage_country_names_database_names.php</li>
+                        <li>includes/functions/functions_lookups.php</li>
+                        <li>includes/modules/payment/paypalwpp.php</li>
+                        <li>YOUR_ADMIN/countries.php</li>
+                        <li>YOUR_ADMIN/customers.php</li>
+                        <li>YOUR_ADMIN/geo_zones.php</li>
+                        <li>YOUR_ADMIN/languages.php</li>
+                        <li>YOUR_ADMIN/zones.php</li>
+                        <li>YOUR_ADMIN/includes/functions/general.php</li>
+                      </ul>
+                    </li>
+                    <li><strong>New Files</strong><br>
+                      Copy the renamed YOUR_ADMIN folder from the 'new files' folder into your store's main directory.<br>
+                      The files are already in the correct directory structure, so a single drag-and-drop of the folder into the root directory for the store will put the files in the correct locations.<br>
+                      <STRONG>Please do not copy the files individually</STRONG> - doing so often results in files being missed out!
+                      <ul class="Steps">
+                        <li>YOUR_ADMIN/includes/extra_datafiles/multilanguage_country_names_database_names.php</li>
+                        <li>YOUR_ADMIN/includes/languages/english/extra_definitions/multi_language_country_names.php</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <strong>Install</strong><br>Copy the renamed YOUR_ADMIN folder from the 'install' folder into your store's main directory.<br>
+                      The files are already in the correct directory structure, so a single drag-and-drop of the folder into the root directory for the store will put the files in the correct locations.<br>
+                      <STRONG>Please do not copy the files individually</STRONG> - doing so often results in files being missed out!
+                      <ul class="Steps">
+                        <li>YOUR_ADMIN/includes/auto_loaders/config.multi_language_country_names.php</li>
+                        <li>YOUR_ADMIN/includes/functions/extra_functions/zen_cfg_read_only.php</li>
+                        <li>YOUR_ADMIN/includes/init_includes/init_multi_language_country_names.php</li>
+                        <li>YOUR_ADMIN/includes/installers/multi_language_country_names/1_0_0.php</li>
+                        <li>YOUR_ADMIN/includes/languages/english/extra_definitions/multi_language_country_names.php</li>
+                      </ul>
+                      <p>After copying these files, log in to your stores admin. The instalation script will now automatically create the needed database tables and settings. Also will it populate the new tables.</p>
+                    </li>
+                  </ol>
+                </div>
+                <div class="tab-pane fade" id="upgrade" role="tabpanel" aria-labelledby="upgrade-tab">
+                  <h3>Upgrade</h3>
+                  <p>Use the list of files in the installation tab for comparison with your current installation, to see if any files have been added, or removed formthe package.<br>The easiest way is to use a file comparison program like Beyond Compare, or Winmerge.</p>
+                </div>
+                <div class="tab-pane fade" id="un-install" role="tabpanel" aria-labelledby="un-install-tab">
+                  <h3>Un-install</h3>
+                  <p>If you do wish to remove the module, simply delete all the New Files loaded in step 2, delete (or replace with your original if the file was already present) Install Files loaded in step 3, then replace all the Modified Core Files loaded in step 1 with your original files.</p>
+                  <p>Finally, run 'uninstall.sql' to remove the configuration, and multi language country name table.</p>
+                </div>
+                <div class="tab-pane fade" id="file-list" role="tabpanel" aria-labelledby="file-list-tab">
+                  <h3>File List</h3>
+                  <table class="dc" cellspacing="0" cellpadding="0">
+                    <thead>
+                      <tr class="SectionAll">
+                        <th class="DirItemHeader">Version 1.1.0</th>
+                        <th class="DirItemHeader"></th>
+                        <th class="DirItemHeader">Version 1.2.0</th>
+                        <th class="DirItemHeader">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="SectionBegin">
+                        <td class="DirItemDefault"><i class="fa fa-folder-open DirOlderExpanded"></i> includes</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><i class="fa fa-folder-open DirNewerExpanded"></i> includes</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">├</span><i class="fa fa-folder-open DirOlderExpanded"></i> classes</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">├</span><i class="fa fa-folder-open DirNewerExpanded"></i> classes</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">│└</span>order.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">│└</span>order.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">├</span><i class="fa fa-folder-open DirOlderExpanded"></i> extra_datafiles</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">├</span><i class="fa fa-folder-open DirNewerExpanded"></i> extra_datafiles</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">│└</span>multilanguage_country_names_database_names.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentSimilar.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">│└</span>multilanguage_country_names_database_names.php</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">├</span><i class="fa fa-folder-open DirOlderExpanded"></i> functions</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">├</span><i class="fa fa-folder-open DirNewerExpanded"></i> functions</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">│└</span>functions_lookups.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">│└</span>functions_lookups.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">└</span><i class="fa fa-folder-open DirOlderExpanded"></i> modules</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">└</span><i class="fa fa-folder-open DirNewerExpanded"></i> modules</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">&nbsp;└</span><i class="fa fa-folder-open DirOlderExpanded"></i> payment</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">&nbsp;└</span><i class="fa fa-folder-open DirNewerExpanded"></i> payment</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">&nbsp;&nbsp;└</span>paypalwpp.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">&nbsp;&nbsp;└</span>paypalwpp.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><i class="fa fa-folder-open DirOrphanOlderExpanded"></i> YOUR_ADMIN</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><i class="fa fa-folder-open DirNewerOrphanExpanded"></i> YOUR_ADMIN</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">├</span><i class="fa fa-folder-open DirOrphanOlderExpanded"></i> includes</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">├</span><i class="fa fa-folder-open DirNewerOrphanExpanded"></i> includes</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirSameExpanded"></i> auto_loaders</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirSameExpanded"></i> auto_loaders</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemSame"><span class="text-black">││└</span>config.multi_language_country_names.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentSame.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemSame"><span class="text-black">││└</span>config.multi_language_country_names.php</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirSameExpanded"></i> extra_datafiles</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirSameExpanded"></i> extra_datafiles</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemSame"><span class="text-black">││└</span>multilanguage_country_names_database_names.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentSame.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemSame"><span class="text-black">││└</span>multilanguage_country_names_database_names.php</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirOrphanOlderExpanded"></i> functions</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirNewerExpanded"></i> functions</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">││├</span><i class="fa fa-folder-open DirOrphanExpanded"></i> extra_functions</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│││</span></td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOrphan"><span class="text-black">│││└</span>zen_cfg_read_only.php</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│││&nbsp;</span></td>
+                        <td class="DirItemDefault">Removed</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">││└</span>general.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">││└</span>general.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirOlderExpanded"></i> init_includes</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirNewerExpanded"></i> init_includes</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">││└</span>init_multi_language_country_names.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">││└</span>init_multi_language_country_names.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirOlderExpanded"></i> installers</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│├</span><i class="fa fa-folder-open DirNewerOrphanExpanded"></i> installers</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">││└</span><i class="fa fa-folder-open DirOlderExpanded"></i> multi_language_country_names</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">││└</span><i class="fa fa-folder-open DirNewerOrphanExpanded"></i> multi_language_country_names</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">││&nbsp;├</span>1_0_0.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">││&nbsp;├</span>1_0_0.php</td>
+                        <td class="DirItemDefault">Removed pre Zen Czrt 1.5.x code</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemSame"><span class="text-black">││&nbsp;├</span>1_0_1.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentSame.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemSame"><span class="text-black">││&nbsp;├</span>1_0_1.php</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemSame"><span class="text-black">││&nbsp;└</span>1_1_0.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentSame.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemSame"><span class="text-black">││&nbsp;├</span>1_1_0.php</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">││&nbsp;&nbsp;</span></td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemOrphan"><span class="text-black">││&nbsp;└</span>1_2_0.php</td>
+                        <td class="DirItemDefault">Version bump</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">│└</span><i class="fa fa-folder-open DirOlderExpanded"></i> languages</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│└</span><i class="fa fa-folder-open DirNewerExpanded"></i> languages</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">│&nbsp;└</span><i class="fa fa-folder-open DirOlderExpanded"></i> english</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│&nbsp;└</span><i class="fa fa-folder-open DirNewerExpanded"></i> english</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemDefault"><span class="text-black">│&nbsp;&nbsp;└</span><i class="fa fa-folder-open DirOlderExpanded"></i> extra_definitions</td>
+                        <td class="DirItemDefault"></td>
+                        <td class="DirItemDefault"><span class="text-black">│&nbsp;&nbsp;└</span><i class="fa fa-folder-open DirNewerExpanded"></i> extra_definitions</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">│&nbsp;&nbsp;&nbsp;└</span>multi_language_country_names.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentSimilar.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">│&nbsp;&nbsp;&nbsp;└</span>multi_language_country_names.php</td>
+                        <td class="DirItemDefault"></td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">├</span>countries.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">├</span>countries.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">├</span>customers.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">├</span>customers.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">├</span>geo_zones.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">├</span>geo_zones.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                      <tr class="SectionMiddle">
+                        <td class="DirItemOlder"><span class="text-black">├</span>languages.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">├</span>languages.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                      <tr class="SectionEnd">
+                        <td class="DirItemOlder"><span class="text-black">└</span>zones.php</td>
+                        <td class="DirItemDefault"><img src="images/ContentDifferent.png" width="28" height="16" alt="<CC>" align="middle"> </td>
+                        <td class="DirItemNewer"><span class="text-black">└</span>zones.php</td>
+                        <td class="DirItemDefault">Update core to Zen Cart 1.5.6c</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="setup" role="tabpanel" aria-labelledby="setup-tab">
+              <h2>Configuration</h2>
+              <p>Now that you have installed this module you can go to your shops admin. Open Locations / Taxes => Countries.<br> You will see that in the right panel there are now multiple entries with flags of the selected country. Click edit, and you will be able to enter a localized name for the country name.
+              <p><u><strong>Uploading a CSV</strong></u></p>
+              <p>A future release is already planned, and will contain a facility to upload a csv or sql file with already translated country names.</p>
+            </div>
+            <div class="tab-pane fade" id="credits" role="tabpanel" aria-labelledby="credits-tab">
+              <h2>Version History</h2>
+              <table>
+                <tr>
+                  <td>Version: </td>
+                  <td>&nbsp;</td>
+                  <td>1.2.0</td>
+                </tr>
+                <tr>
+                  <td>Release Date: </td>
+                  <td>&nbsp;</td>
+                  <td>10-09-2019</td>
+                </tr>
+                <tr>
+                  <td>Zen Cart Versions: </td>
+                  <td>&nbsp;</td>
+                  <td>1.5.6c</td>
+                </tr>
+                <tr>
+                  <td>Author: </td>
+                  <td>&nbsp;</td>
+                  <td><a href="https://zen4all.nl" target="_blank">Zen4All</a></td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <hr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Version: </td>
+                  <td>&nbsp;</td>
+                  <td>1.1.0</td>
+                </tr>
+                <tr>
+                  <td>Release Date: </td>
+                  <td>&nbsp;</td>
+                  <td>08-04-2016</td>
+                </tr>
+                <tr>
+                  <td>Zen Cart Versions: </td>
+                  <td>&nbsp;</td>
+                  <td>1.5.5</td>
+                </tr>
+                <tr>
+                  <td>Author: </td>
+                  <td>&nbsp;</td>
+                  <td><a href="https://zen4all.nl" target="_blank">Zen4All</a></td>
+                </tr>
+                <tr>
+                  <td>Changes: </td>
+                  <td>&nbsp;</td>
+                  <td>File package updated to Zen Cart Version 1.5.5</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <hr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Version: </td>
+                  <td>&nbsp;</td>
+                  <td>v1.0.1</td>
+                </tr>
+                <tr>
+                  <td>Release Date: </td>
+                  <td>&nbsp;</td>
+                  <td>25-06-2015</td>
+                </tr>
+                <tr>
+                  <td>Zen Cart Versions: </td>
+                  <td>&nbsp;</td>
+                  <td>1.5.4</td>
+                </tr>
+                <tr>
+                  <td>Author: </td>
+                  <td>&nbsp;</td>
+                  <td><a href="https://zen4all.nl" target="_blank">Zen4All</a></td>
+                </tr>
+                <tr>
+                  <td>Changes: </td>
+                  <td>&nbsp;</td>
+                  <td>Fixed a typo in countries.php. FORM should have been FROM</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <hr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Version: </td>
+                  <td>&nbsp;</td>
+                  <td>v1.0.0</td>
+                </tr>
+                <tr>
+                  <td>Release Date: </td>
+                  <td>&nbsp;</td>
+                  <td>15-06-2015</td>
+                </tr>
+                <tr>
+                  <td>Zen Cart Versions: </td>
+                  <td>&nbsp;</td>
+                  <td>1.5.4</td>
+                </tr>
+                <tr>
+                  <td>Author: </td>
+                  <td>&nbsp;</td>
+                  <td><a href="https://zen4all.nl" target="_blank">Zen4All</a></td>
+                </tr>
+                <tr>
+                  <td>Changes: </td>
+                  <td>&nbsp;</td>
+                  <td>Initial release</td>
+                </tr>
+              </table>
+            </div>
+            <div class="tab-pane fade" id="license" role="tabpanel" aria-labelledby="license-tab">
+              <ul>
+                <li>License: GPL 2.0 as per included <a href="../LICENSE" target="_blank">LICENSE</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-        <!--End sc2-->
-
-        <!--Begin sc3-->
-        <div class="tabcontent" id="sc3" style="display: block;">
-          <div class="textcontent">
-            <h3>CONFIGURATION</h3>
-            <p>Now that you have installed this module you can go to your shops admin. Open Locations / Taxes => Countries.<br /> You will see that in the right panel there are now multiple entries with flags of the selected country. Click edit, and you will be able to enter a localized name for the country name.
-            <p><u><strong>Uploading a CSV</strong></u></p>
-            <p>A future release is already planned, and will contain a facility to upload a csv or sql file with already translated country names.</p>
-          </div>
-
-        </div>
+        <div class="card-footer text-sm-center">Copyright 2019 <a href="https://zen4all.nl" target="_blank">Zen4All</a></div>
       </div>
-      <!--End sc3-->
-
-      <!--Begin sc4-->
-      <div class="tabcontent" id="sc4" style="display: block;">
-        <div class="textcontent">
-          <h3>FAQs</h3>
-          <p class="BackToTableOfContents"><a href="#top">Back to top</a></p>
-        </div>
-      </div>
-      <!--End sc4-->
-
-      <!--Begin sc5-->
-      <div class="tabcontent" id="sc5" style="display: block;">
-        <div class="textcontent">
-          <h3>CREDITS &amp; HISTORY</h3>
-          <br>
-          <strong>v1.1.0</strong> by Zen4All
-          <ul>
-            <li>File package updated to Zen Cart Version 1.5.5</li>
-          </ul>
-          <br>
-          <strong>v1.0.1</strong> by Zen4All
-          <br>
-          <ul style="margin-top:0">
-            <li>fixed a typo in countries.php. FORM should have been FROM</li>
-          </ul>
-          <br>
-          <strong>v1.0.0</strong> by Zen4All
-          <br>
-          <ul style="margin-top:0">
-            <li>Initial release</li>
-          </ul>
-          <br>
-          Tested on:
-          <ul style="margin-top:0">
-            <li>Zen Cart 1.5.5</li>
-            <li>php 5.5.9</li>
-            <li>MySQL 5.5.43</li>
-          </ul>
-        </div>
-      </div>
-      <!--End sc5-->
-
-      <!--Begin sc6-->
-      <div class="tabcontent" id="sc6" style="display: block;">
-        <div class="textcontent">
-          <h3>LICENSE</h3>
-          <pre>                    GNU GENERAL PUBLIC LICENSE
-                       Version 2, June 1991
-
- Copyright (C) 1989, 1991 Free Software Foundation, Inc., http://fsf.org/
- 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.</pre>
-
-          <p><strong>Always backup your shop and database before making changes.</strong></p>
-        </div>
-      </div>
-      <!--End sc6-->
-
     </div>
-    <!--end tabcontainer-->
-    <script type="text/javascript">document.getElementById('sc2').style.display = 'none';
-      document.getElementById('sc3').style.display = 'none';
-      document.getElementById('sc4').style.display = 'none';
-      document.getElementById('sc5').style.display = 'none';
-      document.getElementById('sc6').style.display = 'none';
-      ShowTabs();
-      // We only show the tab links if JavaScript is available/active.
-      if (document.getElementById("slidetabsmenu") != null) {
-        document.getElementById('slidetabsmenu').style.display = "block";
-      }
-    </script>
+    <script src="jscript/jquery-3.3.1.min.js"></script>
+    <script src="jscript/popper.min.js"></script>
+    <script src="jscript/bootstrap.min.js"></script>
   </body>
 </html>
