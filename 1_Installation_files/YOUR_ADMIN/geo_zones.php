@@ -193,11 +193,11 @@ if (zen_not_null($action)) {
                   <?php
                   /* BOF Zen4All Multi Language Country Names 1 of 1 */
                   $zones_query_raw = "SELECT a.association_id, a.zone_country_id, cn.countries_name, a.zone_id, a.geo_zone_id, a.last_modified, a.date_added, z.zone_name
-                                      FROM (" . TABLE_ZONES_TO_GEO_ZONES . " a
-                                        LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON a.zone_country_id = cn.countries_id
-                                        LEFT JOIN " . TABLE_ZONES . " z ON a.zone_id = z.zone_id)
+                                      FROM " . TABLE_ZONES_TO_GEO_ZONES . " a
+                                      LEFT JOIN " . TABLE_COUNTRIES_NAME . " cn ON a.zone_country_id = cn.countries_id
+                                        AND cn.language_id = " . (int)$_SESSION['languages_id'] . "
+                                      LEFT JOIN " . TABLE_ZONES . " z ON a.zone_id = z.zone_id
                                       WHERE a.geo_zone_id = " . (int)$_GET['zID'] . "
-                                      AND cn.language_id = " . (int)$_SESSION['languages_id'] . "
                                       ORDER BY cn.countries_name, association_id";
                   /* EOF Zen4All Multi Language Country Names 1 of 1 */
 // Split Page
